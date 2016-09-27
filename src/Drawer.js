@@ -9,6 +9,8 @@ import {
     Dimensions,
 } from 'react-native';
 
+import DateWheelPicker from './DateWheelPicker'
+
 export default class Drawer extends Component {
     constructor(props) {
         super(props);
@@ -21,11 +23,13 @@ export default class Drawer extends Component {
     componentWillMount() {
 
     }
-
-
     render() {
         return (
             <Animated.View style={[styles.container, {top: this.state.pos}]}>
+                <View>
+                    <DateWheelPicker/>
+                </View>
+
                 <View style={styles.btmBtnContainer}>
                     <View style={styles.resetView}>
                         <TouchableWithoutFeedback onPress={this._reset.bind(this)}>
@@ -83,18 +87,16 @@ export default class Drawer extends Component {
         this.state.isExpanding = false;
     }
 
-    _reset()
-    {
+    _reset() {
         // if(this.state.isExpanding===true)
         // {
         //     this._moveUp();
         // }
 
     }
-    _ensure()
-    {
-        if(this.state.isExpanding===true)
-        {
+
+    _ensure() {
+        if (this.state.isExpanding === true) {
             this._moveUp();
         }
 
@@ -128,12 +130,12 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     resetText: {
-        fontSize:20,
+        fontSize: 20,
     },
 
     ensureText: {
-        fontSize:20,
-        color:"#27b498"
+        fontSize: 20,
+        color: "#27b498"
     }
 
 

@@ -166,7 +166,6 @@ export default class CropPicList extends Component {
 var styles = StyleSheet.create({
     conatainer: {
         flex: 1,
-
     },
     //顶部容器，筛选条件
     topConatainer: {

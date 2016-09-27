@@ -14,22 +14,19 @@ import {
   TouchableHighlight
 } from 'react-native';
 
-import Splash from './src/Splash';
-import Hello from './src/test/Hello';
-import RefreshControlTest from './src/test/RefreshControlTest';
-import RefreshControlExample from './src/test/RefreshControlExample';
-import DropdownTest from './src/test/DropdownTest';
+// import Splash from './src/Splash';
+// import Hello from './src/test/Hello';
+// import RefreshControlTest from './src/test/RefreshControlTest';
+// import RefreshControlExample from './src/test/RefreshControlExample';
+// import DropdownTest from './src/test/DropdownTest';
 import CropPicList from './src/CropPicList';
-import DrawerLayoutTest from './src/test/DrawerLayoutTest';
-import LayoutAnimationTest from './src/test/LayoutAnimationTest';
-import  AnimatedTest from './src/test/AnimatedTest';
-import  ModalTest from './src/test/ModalTest';
-import  RefTest from './src/test/RefTest';
-import  WheelTest from './src/test/WheelTest';
-
-
-
-
+// import DrawerLayoutTest from './src/test/DrawerLayoutTest';
+// import LayoutAnimationTest from './src/test/LayoutAnimationTest';
+// import  AnimatedTest from './src/test/AnimatedTest';
+// import  ModalTest from './src/test/ModalTest';
+// import  RefTest from './src/test/RefTest';
+// import  WheelTest from './src/test/WheelTest';
+//import  DateWheelTest from './src/test/DateWheelTest';
 
 
 class testProject extends Component {
@@ -84,4 +81,4 @@ class MyScene extends Component {
   }
 }
 
-AppRegistry.registerComponent('testProject', () => WheelTest);
+AppRegistry.registerComponent('testProject', () => CropPicList);
