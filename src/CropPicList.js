@@ -14,7 +14,6 @@ import {
 } from 'react-native';
 
 import CropPicItem from './CropPicItem';
-import CustomFun from './test/CustomFun';
 import Drawer from './Drawer';
 /**
  下拉菜单 地址：https://github.com/sohobloo/react-native-modal-dropdown
@@ -22,8 +21,9 @@ import Drawer from './Drawer';
  */
 import ModalDropdown from 'react-native-modal-dropdown';
 
-const Farm_Mame = ['广州大气候农业科技有限公司农场1凑字数啦啦啦啦啦', '农场2', '农场3', '农场4', '农场5'];
+import Spinner from './Spinner'
 
+const Farm_Mame = ['广州大气候农业科技有限公司农场1凑字数啦啦啦啦啦', '农场2', '农场3', '农场4', '农场5'];
 
 export default class CropPicList extends Component {
 
@@ -63,7 +63,7 @@ export default class CropPicList extends Component {
         return (
             <View style={styles.conatainer}>
                 <View style={styles.topConatainer}>
-                    <ModalDropdown
+                 <ModalDropdown
                         style={styles.modalDropdown}
                         defaultValue={Farm_Mame[0]}
                         textStyle={styles.dropdownText}
@@ -85,13 +85,7 @@ export default class CropPicList extends Component {
                     </View>
 
                 </View>
-                <Animated.View style={[styles.drawerContainer, {top: this.state.pos,}]}>
-                    <View>
-
-                    </View>
-                </Animated.View>
                 <Drawer ref={(drawer) => { this.drawer = drawer; }} />
-
                 <ScrollView
                     style={styles.scrollview}
                     refreshControl={
@@ -109,7 +103,6 @@ export default class CropPicList extends Component {
                     {rows}
                 </ScrollView>
             </View>
-
         );
     }
 

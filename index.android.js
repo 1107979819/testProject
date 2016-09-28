@@ -27,6 +27,7 @@ import CropPicList from './src/CropPicList';
 // import  RefTest from './src/test/RefTest';
 // import  WheelTest from './src/test/WheelTest';
 //import  DateWheelTest from './src/test/DateWheelTest';
+import DropdownTestB from './src/test/DropdownTestB';
 
 
 class testProject extends Component {

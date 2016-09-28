@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 
 import DateWheelPicker from './DateWheelPicker'
+import Spinner from './Spinner'
 
 export default class Drawer extends Component {
     constructor(props) {
@@ -23,11 +24,18 @@ export default class Drawer extends Component {
     componentWillMount() {
 
     }
+
     render() {
         return (
             <Animated.View style={[styles.container, {top: this.state.pos}]}>
                 <View>
-                    <DateWheelPicker/>
+                    <Text style={styles.timeText}>
+                        选择时间
+                    </Text>
+                </View>
+                <DateWheelPicker/>
+                <View style={{marginTop: 10,height:50}}>
+                    <Spinner ref={(drawer) => { this.drawer = drawer; }} />
                 </View>
 
                 <View style={styles.btmBtnContainer}>
@@ -74,6 +82,8 @@ export default class Drawer extends Component {
             }
         ).start();
         this.state.isExpanding = true;
+        //这里要用一个延时，待动画结束后，下拉抽屉完全弹出的时候调用更新 下拉菜单的按钮位置，否则第一次打开的时候，会导致下拉列表错位
+        setTimeout(()=>this.drawer._DrawerShow(),501);
     }
 
     _moveUp() {
@@ -92,14 +102,12 @@ export default class Drawer extends Component {
         // {
         //     this._moveUp();
         // }
-
     }
 
     _ensure() {
         if (this.state.isExpanding === true) {
             this._moveUp();
         }
-
     }
 }
 
@@ -108,14 +116,12 @@ const styles = StyleSheet.create({
         position: 'absolute',
         backgroundColor: '#ffffff',
         width: Dimensions.get('window').width,
-        height: 240,
+        height: 280,
         zIndex: 1,
         justifyContent: 'flex-end',
-
     },
     //底部按钮
     btmBtnContainer: {
-
         flexDirection: 'row',
         height: 50,
     },
@@ -136,7 +142,11 @@ const styles = StyleSheet.create({
     ensureText: {
         fontSize: 20,
         color: "#27b498"
-    }
-
-
+    },
+    timeText:{
+        fontSize: 20,
+        marginLeft:20,
+        marginTop:10,
+        marginBottom:10,
+    },
 });

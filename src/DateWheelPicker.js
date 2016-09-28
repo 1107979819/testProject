@@ -17,8 +17,6 @@ export  default class DateWheelPicker extends Component {
             dayselectedItem: 0,
 
 
-
-
             yearitemList: ['2015', '2016', '2017', '2018','2019','2020','2021','2022','2023','2024','2025','2026'],
             monthitemList: ['1', '2', '3', '4','5','6','7','8','9','10','11','12'],
             dayitemList: [ '1', '2', '3','4','5','6','7','8','9','10','11','12', '13', '14', '15','16','17','18','19','20','21','22','23','24', '25', '26', '27','28','29','30','31'],
@@ -67,7 +65,7 @@ export  default class DateWheelPicker extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Picker style={{width: 80, height: 100}}
+                <Picker style={{width: 100, height: 90}}
                         selectedValue={this.state.yearselectedItem}
                         itemStyle={{color: "#27b498", fontSize: 26,}}
                         onValueChange={(index) => this.onYearPikcerSelect(index)}>
@@ -78,7 +76,7 @@ export  default class DateWheelPicker extends Component {
                 <Text style={styles.text}>
                     年
                 </Text>
-                <Picker style={{width: 60, height: 100}}
+                <Picker style={{width: 80, height: 90}}
                         selectedValue={this.state.monthselectedItem}
                         itemStyle={{color: "#27b498", fontSize: 26,}}
                         onValueChange={(index) => this.onMonthPikcerSelect(index)}>
@@ -89,7 +87,7 @@ export  default class DateWheelPicker extends Component {
                 <Text style={styles.text}>
                     月
                 </Text>
-                <Picker style={{width: 60, height: 100}}
+                <Picker style={{width: 80, height: 90}}
                         selectedValue={this.state.dayselectedItem}
                         itemStyle={{color: "#27b498", fontSize: 26,}}
                         onValueChange={(index) => this.onDayPikcerSelect(index)}>
