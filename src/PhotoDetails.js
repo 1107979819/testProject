@@ -8,6 +8,18 @@ import Gallery from 'react-native-gallery';
 import {pxToDp} from './utils';
 
 export default class PhotoDetails extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            topPos: 0,
+            btmPos: pxToDp(340),
+            gallerybg: '#ffffff',
+            isShow:true,
+        };
+    }
+
+
+
     render() {
         return (
             <View style={styles.container}>
@@ -20,7 +32,7 @@ export default class PhotoDetails extends Component {
                         style={{
                             width: Dimensions.get('window').width,
                             height: Dimensions.get('window').height,
-                            backgroundColor: '#ffffff',
+                            backgroundColor:this.state.gallerybg,
 
                         }}
                         images={[
@@ -28,11 +40,16 @@ export default class PhotoDetails extends Component {
                             'http://airag.oss-cn-shenzhen.aliyuncs.com/00000013/20160630/00000013-20160630023250.jpg',
                             'http://airag.oss-cn-shenzhen.aliyuncs.com/00000013/20160630/00000013-20160630104745.jpg'
                         ]}
+                        onPageSelected={(pos)=>this._onPageSelected(pos)}
+                        onPageScrollStateChanged={(status)=>this._onPageScrollStateChanged(status)}
+                        onPageScroll={(e)=>this._onPageScroll(e)}
+                        onSingleTapConfirmed={(pos)=>this._onSingleTapConfirmed(pos)}
+                        onGalleryStateChanged={(boolean)=>this._onGalleryStateChanged(boolean)}
                     />
                 </View>
 
 
-                <View style={styles.topContainer}>
+                <View style={[styles.topContainer, {top: this.state.topPos,}]}>
                     <TouchableOpacity style={{}} onPress={()=>alert('xxx')}>
                         <Image
                             style={{width: 20, height: pxToDp(40), margin: 5}
@@ -43,7 +60,7 @@ export default class PhotoDetails extends Component {
                         照片详情
                     </Text>
                     <View style={{flex: 1, flexDirection: 'row', justifyContent: 'flex-end', marginRight: pxToDp(15)}}>
-                        <TouchableOpacity >
+                        <TouchableOpacity onPress={this._share.bind(this)}>
                             <View style={styles.shareBtn}>
                                 <Text style={{fontSize: pxToDp(38), color: 'white'}}>
                                     分享
@@ -58,7 +75,7 @@ export default class PhotoDetails extends Component {
                 </View>
 
 
-                <View style={styles.btmContainer}>
+                <View style={[styles.btmContainer, {top: Dimensions.get('window').height - this.state.btmPos,}]}>
                     <View style={styles.rowTextView}>
                         <Text style={[styles.detailsText]}>
                             大气候农业基地
@@ -82,15 +99,81 @@ export default class PhotoDetails extends Component {
                             农眼：
                         </Text>
                         <Text style={[styles.detailsText]}>
-                            0000001
+                            00000001
                         </Text>
                     </View>
+                    <View style={{height: 1, width: Dimensions.get('window').width, backgroundColor: '#c4c4c4'}}>
+                    </View>
+                    <TouchableOpacity>
+                        <View style={styles.downloadBtn}>
+                            <Image
+                                style={{width: pxToDp(40), height: pxToDp(40),}}
+                                source={require('./images/icons/doanload.png')}/>
+                            <Text style={{fontSize: pxToDp(30),}}>
+                                下载到手机
+                            </Text>
+                        </View>
+                    </TouchableOpacity>
+
 
                 </View>
 
             </View>
         )
     }
+    _share()
+    {
+
+    }
+    _showMessage() {
+
+        this.setState({
+            topPos: 0,
+            btmPos:  pxToDp(340),
+        gallerybg:'#ffffff',
+            isShow:true,
+        });
+    }
+
+    _hideMessage() {
+
+        this.setState({
+            topPos:  -pxToDp(130),
+            btmPos: 0,
+            gallerybg:'#000000',
+            isShow:false,
+        });
+    }
+    _onPageSelected(pos)
+    {
+        console.log('pos:'+pos);
+    }
+    _onPageScrollStateChanged(status)
+    {
+        console.log('status:'+status);
+    }
+    _onPageScroll(e)
+    {
+        console.log('_onPageScroll:'+e);
+    }
+    _onSingleTapConfirmed(pos)
+    {
+        console.log('_onSingleTapConfirmed:'+pos);
+
+        if(this.state.isShow==true)
+        {
+            this._hideMessage();
+        }else {
+            this._showMessage();
+        }
+    }
+    _onGalleryStateChanged(boolean)
+    {
+        console.log('_onGalleryStateChanged:'+boolean);
+
+    }
+
+
 }
 // css样式
 var styles = StyleSheet.create({
@@ -116,26 +199,33 @@ var styles = StyleSheet.create({
         justifyContent: 'center',
 
     },
-    //底部信息栏
-   btmContainer: {
-        top:Dimensions.get('window').height- pxToDp(300),
+    //分享按钮样式
+    downloadBtn: {
         width: Dimensions.get('window').width,
-        height: pxToDp(300),
-        backgroundColor: '#c4c4c4',
+        height: pxToDp(111),
+        flexDirection: 'row',
+        backgroundColor: '#ffffff',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    //底部信息栏
+    btmContainer: {
+
+        width: Dimensions.get('window').width,
+        height: pxToDp(340),
+        backgroundColor: '#ffffff',
         position: 'absolute',
         zIndex: 1
     },
     //信息文字
-    detailsText:
-    {
-        fontSize:pxToDp(30),
-        marginLeft:pxToDp(15)
+    detailsText: {
+        fontSize: pxToDp(30),
+        marginLeft: pxToDp(15)
     },
     //没行信息文字容器
-    rowTextView:
-    {
-        flexDirection:'row',
-        marginLeft:pxToDp(30),
-        marginBottom:pxToDp(22),
+    rowTextView: {
+        flexDirection: 'row',
+        marginLeft: pxToDp(30),
+        marginBottom: pxToDp(22),
     },
 });
