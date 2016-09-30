@@ -10,6 +10,17 @@ import {
 
 } from 'react-native';
 
+
+/*
+    调用示例：
+         _funA()
+         {
+            alert('xxxafafafx');
+         }
+       <CustomFun
+        funA={this._funA.bind(this)}
+     />
+* */
 export default class CustomFun extends Component {
 
 
@@ -29,7 +40,6 @@ export default class CustomFun extends Component {
             <View style={styles.container}>
                 <TouchableHighlight
                     onPress={this.props.funA}
-
                 >
                     <Text>
                         xxxxx

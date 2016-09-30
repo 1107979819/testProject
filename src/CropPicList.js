@@ -22,6 +22,7 @@ import Drawer from './Drawer';
 import ModalDropdown from 'react-native-modal-dropdown';
 
 import Spinner from './Spinner'
+import CustomFun from './test/CustomFun'
 
 const Farm_Mame = ['广州大气候农业科技有限公司农场1凑字数啦啦啦啦啦', '农场2', '农场3', '农场4', '农场5'];
 
@@ -42,16 +43,14 @@ export default class CropPicList extends Component {
 
         };
         this._onRefresh = this._onRefresh.bind(this);
+        this._funA = this._funA.bind(this);
     }
-
-
     _onClick(row) {
         row.clicks++;
         this.setState({
             rowData: this.state.rowData,
         });
     };
-
     _funA()
     {
         alert('xxxafafafx');
@@ -99,7 +98,13 @@ export default class CropPicList extends Component {
                             progressBackgroundColor="#ffff00"
                         />
                     }>
-                    <CropPicItem/>
+                    <CustomFun
+                        funA={this._funA}
+                    />
+                    <CustomFun
+                        funA={this._funA}
+                    />
+                    
                     {rows}
                 </ScrollView>
             </View>

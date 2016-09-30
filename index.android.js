@@ -19,7 +19,7 @@ import {
 // import RefreshControlTest from './src/test/RefreshControlTest';
 // import RefreshControlExample from './src/test/RefreshControlExample';
 // import DropdownTest from './src/test/DropdownTest';
-import CropPicList from './src/CropPicList';
+// import CropPicList from './src/CropPicList';
 // import DrawerLayoutTest from './src/test/DrawerLayoutTest';
 // import LayoutAnimationTest from './src/test/LayoutAnimationTest';
 // import  AnimatedTest from './src/test/AnimatedTest';
@@ -27,7 +27,14 @@ import CropPicList from './src/CropPicList';
 // import  RefTest from './src/test/RefTest';
 // import  WheelTest from './src/test/WheelTest';
 //import  DateWheelTest from './src/test/DateWheelTest';
-import DropdownTestB from './src/test/DropdownTestB';
+// import DropdownTestB from './src/test/DropdownTestB';
+//import FetchTest from './src/test/FetchTest';
+//import ListviewNetRequest from './src/test/ListviewNetRequest';
+// import ImagePanZoomTest from './src/test/ImagePanZoomTest';
+// import ImageViewerText from './src/test/ImageViewerText';
+// import GalleryTest from './src/test/GalleryTest';
+import PhotoDetails from './src/PhotoDetails';
+
 
 
 class testProject extends Component {
@@ -82,4 +89,4 @@ class MyScene extends Component {
   }
 }
 
-AppRegistry.registerComponent('testProject', () => CropPicList);
+AppRegistry.registerComponent('testProject', () =>PhotoDetails);

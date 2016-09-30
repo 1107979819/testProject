@@ -2,12 +2,6 @@ import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 
 export default class Hello extends Component {
-    getDefaultProps() {
-        return {
-            title: 'Hello'
-        };
-    }
-
     render() {
         return (
             <View>
@@ -16,3 +10,8 @@ export default class Hello extends Component {
         )
     }
 }
+
+// css样式
+var styles = StyleSheet.create({
+
+});
